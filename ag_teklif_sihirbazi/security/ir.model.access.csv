@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ag_teklif_sihirbazi.access_teklif,access_teklif,ag_teklif_sihirbazi.model_teklif,base.group_user,1,1,1,1
+ag_teklif_sihirbazi.access_teklif_ped,access_teklif.ped,ag_teklif_sihirbazi.model_teklif_ped,base.group_user,1,1,1,1
+ag_teklif_sihirbazi.access_teklif_silo,access_teklif.silo,ag_teklif_sihirbazi.model_teklif_silo,base.group_user,1,1,1,1
+ag_teklif_sihirbazi.access_teklif_urun,access_teklif.urun,ag_teklif_sihirbazi.model_teklif_urun,base.group_user,1,1,1,1

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_teklif_form" model="ir.ui.view">
+        <field name="name">teklif.form</field>
+        <field name="model">teklif</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                        <button name="action_generate_products" class="btn-primary" type="object" string="ÜRÜNLERİ OLUŞTUR"/>
+                     <button name="action_generate_order" class="btn-primary" type="object" string="SATIŞ TEKLİFİ OLUŞTUR"/>
+                </header>
+                <sheet>
+                    <div class="oe_title" style="width: 100%;">
+                        <h1>
+                            <field name="baslik" placeholder="Teklif başlığı girin..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="durum" invisible="1"/>
+                            <field name="teklif_tarihi"/>
+                            <field name="gecerlilik_tarihi"/>
+                            <field name="musteri_id"/>
+                            <field name="kumes_tipi" widget="radio" options="{'horizontal': true}"/>
+                            <field name="yapi" widget="radio" options="{'horizontal': true}"/>
+                            <field name="ortadan_bolme" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                        <group>
+                            <field name="kumes_uzunluk"/>
+                            <field name="kumes_genislik"/>
+                            <field name="yan_duvar_yuksekligi"/>
+                            <field name="mahya_yuksekligi"/>
+                            <field name="makas_araligi"/>
+                            <field name="es_kumes_sayisi"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Yemlik Hattı" name="yemlik_hatti" autofocus="autofocus">
+                            <group>
+                                <group>
+                                    <field name="yh_hat_sayisi"/>
+                                    <field name="yh_kazan_tipi"/>
+                                    <field name="yh_yem_motoru"/>
+                                </group>
+                                <group>
+                                    <field name="yh_ara_durdurucu" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="yh_yemlik_tipi"/>
+                                    <field name="yh_civciv_yemlik_sehpa"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Sulama Hattı" name="sulama_hatti">
+                            <group>
+                                <group>
+                                    <field name="sh_hat_sayisi"/>
+                                    <field name="sh_hat_bolum_sayisi"/>
+                                    <field name="sh_nipel_tipi"/>
+                                </group>
+                                <group>
+                                    <field name="sh_regulator_tipi"/>
+                                    <field name="sh_medikator"/>
+                                    <field name="sh_civciv_suluk_sehpa"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Yemlik Kaldırma" name="yemlik_kaldirma">
+                            <group>
+                                <group>
+                                    <field name="yk_tipi" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="yk_vinc_tipi" attrs="{'invisible': [('yk_tipi', '==', 'Otomatik')], 'required': [('yk_tipi', '==', 'Manuel')]}"/>
+                                </group>
+                                <group>
+                                    <field name="yk_motor_sayisi"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Sulama Kaldırma" name="sulama_kaldirma">
+                            <group>
+                                <group>
+                                    <field name="sk_tipi" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="sk_vinc_tipi" attrs="{'invisible': [('sk_tipi', '==', 'Otomatik')], 'required': [('sk_tipi', '==', 'Manuel')]}"/>
+                                </group>
+                                <group>
+                                    <field name="sk_motor_sayisi"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Havalandırma" name="havalandirma">
+                            <group>
+                                <group>
+                                    <field name="hv_klepe_tipi"/>
+                                    <field name="hv_klepe_sayisi"/>
+                                    <field name="hv_klepe_ac_kap" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="hv_klepe_davlumbaz" widget="radio" options="{'horizontal': true}"/>
+                                </group>
+                                <group>
+                                    <field name="hv_tunel_fan"/>
+                                    <field name="hv_tunel_fan_sayisi"/>
+                                    <field name="hv_mini_fan"/>
+                                    <field name="hv_mini_fan_sayisi"/>
+                                    <field name="hv_konik_fan"/>
+                                    <field name="hv_konik_fan_sayisi"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Ped Modülleri" name="ped">
+                            <field name="teklif_pedleri">
+                                <tree editable="bottom">
+                                    <field name="ped_no"/>
+                                    <field name="ped_tipi"/>
+                                    <field name="ped_kagit_markasi"/>
+                                    <field name="ped_kagit_eni"/>
+                                    <field name="ped_yuksekligi"/>
+                                    <field name="ped_modul_uzunlugu"/>
+                                    <field name="ped_kapak_sistemi"/>
+                                    <field name="ped_acma_kapama"/>
+                                    <field name="teklif_id" invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="ped_no"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_tipi"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_kagit_markasi"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_kagit_eni"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_yuksekligi"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_modul_uzunlugu"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_kapak_sistemi"/>
+                                        </group>
+                                        <group>
+                                            <field name="ped_acma_kapama"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Silolar" name="silo">
+                            <field name="teklif_silolari">
+                                <tree editable="bottom">
+                                    <field name="silo_no"/>
+                                    <field name="silo_urun"/>
+                                    <field name="teklif_id" invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="silo_no"/>
+                                        </group>
+                                        <group>
+                                            <field name="silo_urun"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Yem Nakil" name="yem_nakil">
+                            <group>
+                                <group>
+                                    <field name="yn_motor_tipi"/>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="yn_tekli_cikis_sayisi"/>
+                                    <field name="yn_tekli_cikis_baglanti" widget="radio" options="{'horizontal': true}"/>
+                                </group>
+                                <group>
+                                    <field name="yn_ciftli_cikis_sayisi"/>
+                                    <field name="yn_ciftli_cikis_baglanti" widget="radio" options="{'horizontal': true}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Aydınlatma" name="aydinlatma">
+                            <group>
+                                <group>
+                                    <field name="ay_turu" widget="radio"/>
+                                </group>
+                                <group>
+                                    <field name="ay_hat_sayisi"/>
+                                    <field name="ay_lamba_araligi" widget="radio"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Pano" name="pano">
+                            <group>
+                                <group>
+                                    <field name="pn_maliyet"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Isıtma" name="isitma">
+                            <group>
+                                <group>
+                                    <field name="is_miktar"/>
+                                    <field name="is_urun"/>
+                                </group>
+                                <group>
+                                    <field name="is_maliyet"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+
+                    <div class="oe_title" style="width: 100%; margin-top:50px;">
+                        <h1>ÜRÜNLER</h1>
+                    </div>
+                    <field name="teklif_urunleri">
+                        <tree editable="bottom">
+                            <field name="tu_urun"/>
+                            <field name="tu_miktar"/>
+                            <field name="tu_maliyet"/>
+                            <field name="tu_maliyet_toplam"/>
+                            <field name="teklif_id" invisible="1"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <group>
+                                    <field name="tu_urun"/>
+                                </group>
+                                <group>
+                                    <field name="tu_miktar"/>
+                                </group>
+                                <group>
+                                    <field name="tu_maliyet"/>
+                                </group>
+                                <group>
+                                    <field name="tu_maliyet_toplam"/>
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_teklif_tree" model="ir.ui.view">
+        <field name="name">teklif.tree</field>
+        <field name="model">teklif</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="musteri_id"/>
+                <field name="baslik"/>
+                <field name="kumes_tipi"/>
+                <field name="teklif_tarihi"/>
+                <field name="gecerlilik_tarihi"/>
+                <field name="durum"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_teklif" model="ir.actions.act_window">
+        <field name="name">Teklifler</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">teklif</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_teklifler"
+            name="Teklif Sihirbazı"
+            action="action_teklif"
+            sequence="10"/>
+
+</odoo>
